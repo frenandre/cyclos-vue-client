@@ -1,6 +1,12 @@
 
 module.exports = {
   /*
+  ** Router config
+  */
+  router: {
+    middleware: 'auth'
+  },
+  /*
   ** Headers of the page
   */
   head: {
@@ -43,6 +49,18 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    }
+  },
+  modules: [
+    '@nuxtjs/axios',
+  ],
+  axios: {
+    baseURL: 'http://cyclos.local/rest',
+    requestInterceptor: (config, { store }) => {
+      if (store.state.auth) {
+        config.headers.common['Authorization'] = 'Basic ' + store.state.auth
+      }
+      return config
     }
   }
 }
