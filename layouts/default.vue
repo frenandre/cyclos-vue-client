@@ -42,7 +42,8 @@
         drawer: true,
         fixed: false,
         items: [
-          { icon: 'apps', title: 'Welcome', to: '/', private: false }
+          { icon: 'apps', title: 'Welcome', to: '/', private: false },
+          { icon: 'bubble_chart', title: 'Me', to: '/me', private: true }
         ],
         miniVariant: false,
         title: 'Vuetify.js'
