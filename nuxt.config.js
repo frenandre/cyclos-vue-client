@@ -4,7 +4,7 @@ module.exports = {
   ** Router config
   */
   router: {
-    middleware: 'auth'
+    middleware: 'route'
   },
   /*
   ** Headers of the page

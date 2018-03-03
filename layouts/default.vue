@@ -1,7 +1,8 @@
 <template>
   <v-app>
     <v-navigation-drawer :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" fixed app>
-     <v-list>
+      <center><h1 class="display-1 mt-3">Cyclos</h1></center>
+      <v-list>
         <v-list-tile 
           router
           :to="item.to"
@@ -21,7 +22,7 @@
     </v-navigation-drawer>
     <v-toolbar fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-title v-text="pageTitle"></v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container>
@@ -34,20 +35,26 @@
   </v-app>
 </template>
 
+
 <script>
-  export default {
-    data () {
-      return {
-        clipped: true,
-        drawer: true,
-        fixed: false,
-        items: [
-          { icon: 'apps', title: 'Welcome', to: '/', private: false },
-          { icon: 'bubble_chart', title: 'Me', to: '/me', private: true }
-        ],
-        miniVariant: false,
-        title: 'Vuetify.js'
-      }
+import { mapGetters } from 'vuex'
+
+export default {
+  data () {
+    return {
+      clipped: false,
+      drawer: true,
+      fixed: false,
+      items: [
+        { icon: 'home', title: 'Welcome', to: '/', private: false },
+        { icon: 'bubble_chart', title: 'Me', to: '/me', private: true },
+        { icon: 'view_list', title: 'Anzeigen', to: '/ads', private: true }
+      ],
+      miniVariant: false
     }
+  },
+  computed: {
+    ...mapGetters(['pageTitle'])
   }
+}
 </script>
