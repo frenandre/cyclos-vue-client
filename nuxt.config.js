@@ -21,7 +21,10 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-  plugins: ['~/plugins/vuetify.js'],
+  plugins: [
+    '~/plugins/vuetify.js',
+    '~/plugins/axios.js'
+  ],
   css: [
     '~/assets/style/app.styl'
   ],
@@ -55,12 +58,6 @@ module.exports = {
     '@nuxtjs/axios',
   ],
   axios: {
-    baseURL: 'http://cyclos.local/rest',
-    requestInterceptor: (config, { store }) => {
-      if (store.state.auth) {
-        config.headers.common['Authorization'] = 'Basic ' + store.state.auth
-      }
-      return config
-    }
+    baseURL: 'http://cyclos.local/rest'
   }
 }
